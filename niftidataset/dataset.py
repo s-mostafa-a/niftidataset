@@ -52,6 +52,14 @@ class NiftiDataset(Dataset):
         source_fns, target_fns = glob_imgs(source_dir), glob_imgs(target_dir)
         return cls(source_fns, target_fns, transform, preload)
 
+    def target_mean(self):
+        import numpy as np
+        means = []
+        for i in range(len(self.imgs)):
+            src, tgt = self.__getitem__(i)
+            means.append(tgt.mean())
+        np.asarray(means)
+
     def __len__(self):
         return len(self.source_fns)
 
