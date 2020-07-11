@@ -59,6 +59,7 @@ class NiftiDataset(Dataset):
             src, tgt = self.__getitem__(i)
             means.append(tgt.mean())
         np.asarray(means)
+        return means.mean()
 
     def __len__(self):
         return len(self.source_fns)
