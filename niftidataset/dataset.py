@@ -55,7 +55,7 @@ class NiftiDataset(Dataset):
     def target_mean(self):
         import numpy as np
         means = []
-        for i in range(len(self.imgs)):
+        for i in range(len(self)):
             src, tgt = self.__getitem__(i)
             means.append(tgt.mean())
         np.asarray(means)
