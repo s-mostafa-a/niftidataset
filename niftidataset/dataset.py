@@ -58,8 +58,7 @@ class NiftiDataset(Dataset):
         for i in range(len(self)):
             src, tgt = self.__getitem__(i)
             means.append(tgt.mean())
-        np.asarray(means)
-        return means.mean()
+        return np.asarray(means)
 
     def __len__(self):
         return len(self.source_fns)
